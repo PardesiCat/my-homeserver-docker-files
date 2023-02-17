@@ -1,3 +1,5 @@
+#/bin/bash
+#ofc these scipits are writtenby me 
 echo -e "Starting whoogle container"
 sleep 2
 
