@@ -1,0 +1,12 @@
+version: '3'
+services:
+ whoogle:
+  image: benbusby/whoogle-search
+  container_name: whoogle
+  restart: always
+  networks:
+    - npm_default
+networks:
+  npm_default:
+    name: npm_default
+    external: true
