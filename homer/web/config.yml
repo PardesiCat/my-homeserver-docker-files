@@ -160,3 +160,9 @@ services:
         keywords: "portainer to inspect or  manage things" # optional keyword used for searching purpose
         url: "https://ppanel.pardesicat.xyz"
         target: "_blank" # optional html tag target attribute
+      - name: "fileshare"
+        logo: "assets/tools/psi.png"
+        target: "_blank"
+        url: "https://fileshare.pardesicat.xyz"
+        tag: "share"
+        subtitle: "with psi share your files easlily withour pain"
