@@ -1,0 +1,18 @@
+version: '3'
+services:
+  psitransfer:
+    container_name: psitransfer
+    image: psitrax/psitransfer:latest
+    restart: always
+    ports:
+      - 3434:3000
+    environment:
+      - PSITRANSFER_ADMIN_PASS=password
+    volumes:
+      - ${PWD}/data/:/data/
+    networks:
+      - npm_default
+networks:
+  npm_default:
+    name: npm_default
+    external: true

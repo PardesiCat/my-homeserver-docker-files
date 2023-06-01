@@ -1,0 +1,16 @@
+version: '3'
+services:
+  lingva:
+    container_name: lingva
+    image: git.pardesicat.xyz/pardesicat/ltranslate:latest
+    restart: always
+    environment:
+      - force_default_theme=dark
+      - default_source_lang=auto
+      - default_target_lang=en
+    networks:
+      - npm_default
+networks:
+  npm_default:
+    name: npm_default
+    external: true
