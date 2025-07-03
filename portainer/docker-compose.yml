@@ -1,15 +1,12 @@
 version: '3'
 services:
  portrainer:
-  image: portainer/portainer-ce:latest
+  image: portainer/portainer-ce:lts
   container_name: portrainer
   restart: always
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - ${pwd}/portainer_data:/data
+    - ${PWD}/portainer_data:/data
   ports:
     - 8000:8000
     - 9443:9443
-
-
-

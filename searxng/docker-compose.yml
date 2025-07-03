@@ -4,16 +4,12 @@ services:
     image: searxng/searxng
     container_name: searxng
     restart: always
+    ports:
+      - 8181:8080
     volumes:
       - ${PWD}/searxng:/etc/searxng
     environment:
       - INSTANCE_NAME=Pardesi-Search
-      - BASE_URL=https://pardesicat.xyz/
+      - BASE_URL=https://search.pardesicat.xyz/
       - AUTOCOMPLETE=google
       - AUTOCOMPLETE_MIN=2
-    networks:
-      - npm_default
-networks:
-  npm_default:
-    name: npm_default
-    external: true

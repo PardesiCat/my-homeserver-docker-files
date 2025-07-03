@@ -1,0 +1,12 @@
+# docker-compose.yml
+services:
+  convertx:
+    image: c4illin/convertx:main
+    container_name: convertx
+    restart: unless-stopped
+    ports:
+      - "4533:3000"
+    environment:
+      - JWT_SECRET=aLongAndSecretStringUsedToSignTheJSONWebToken1234 # will use randomUUID() if unset
+    volumes:
+      - ${PWD}/data:/app/data
