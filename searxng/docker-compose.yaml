@@ -1,0 +1,25 @@
+version: '3'
+services:
+  searxng:
+    image: searxng/searxng
+    container_name: searxng
+    restart: always
+    ports:
+      - 8181:8080
+    volumes:
+      - ${PWD}/searxng:/etc/searxng
+    environment:
+      - INSTANCE_NAME=Pardesi-Search
+      - BASE_URL=https://search.pardesicat.xyz/
+      - AUTOCOMPLETE=google
+      - AUTOCOMPLETE_MIN=2
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: searxng_watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 300 --label-enable
