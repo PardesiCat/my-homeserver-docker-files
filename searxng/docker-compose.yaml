@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   searxng:
     image: searxng/searxng
@@ -14,12 +15,16 @@ services:
       - AUTOCOMPLETE=google
       - AUTOCOMPLETE_MIN=2
     labels:
+      # watch tower for auto update
       - "com.centurylinklabs.watchtower.enable=true"
 
-  watchtower:
-    image: containrrr/watchtower
-    container_name: searxng_watchtower
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --cleanup --interval 300 --label-enable
+
+#watch tower now running in separte with other container in support
+
+#  watchtower:
+#    image: containrrr/watchtower
+#    container_name: searxng_watchtower
+#    restart: always
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: --cleanup --interval 300 --label-enable
