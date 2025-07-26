@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  reubah:
+    image: ghcr.io/dendianugerah/reubah:latest
+    container_name: reubah
+    ports:
+      - "8281:8081"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    labels:
+      # watch tower for auto update
+      - "com.centurylinklabs.watchtower.enable=true"

@@ -1,0 +1,16 @@
+services:
+  enclosed:
+    container_name: enclosed
+    image: corentinth/enclosed
+    ports:
+      - 8787:8787
+    volumes:
+      - ${PWD}/enclosed-data:/app/.data
+    restart: unless-stopped
+    labels:
+      # watch tower for auto update
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  enclosed-data:
+    driver: local
