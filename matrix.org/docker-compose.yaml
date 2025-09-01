@@ -1,0 +1,13 @@
+# written by pardesi_cat
+version: "3"
+
+services:
+  matrix:
+    image: matrixdotorg/synapse:latest
+    container_name: matrix_synapse
+    restart: always
+    user: "0:0"
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./synapse-data:/data

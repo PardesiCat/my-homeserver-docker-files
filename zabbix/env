@@ -1,0 +1,7 @@
+# Database settings
+POSTGRES_USER=null
+POSTGRES_PASSWORD=null
+POSTGRES_DB=null
+
+# Timezone (adjust to your region)
+PHP_TZ=IST

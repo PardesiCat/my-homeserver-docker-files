@@ -1,0 +1,35 @@
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    // Well-known for federation
+    if (url.pathname === "/.well-known/matrix/server") {
+      return new Response(
+        JSON.stringify({
+          "m.server": "im.pardesicat.xyz:443"
+        }),
+        {
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+    }
+
+    // Well-known for client discovery
+    if (url.pathname === "/.well-known/matrix/client") {
+      return new Response(
+        JSON.stringify({
+          "m.homeserver": { "base_url": "https://im.pardesicat.xyz" }
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        }
+      );
+    }
+
+    // Default: 404
+    return new Response("Not found", { status: 404 });
+  },
+};

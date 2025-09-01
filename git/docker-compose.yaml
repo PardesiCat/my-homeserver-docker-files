@@ -1,0 +1,40 @@
+networks:
+  forgejo:
+    external: false
+
+services:
+  server:
+    image: codeberg.org/forgejo/forgejo:12
+    container_name: forgejo
+    environment:
+      - USER_UID=1001
+      - USER_GID=1001
+      - FORGEJO__database__DB_TYPE=postgres
+      - FORGEJO__database__HOST=db:5432
+      - FORGEJO__database__NAME=null
+      - FORGEJO__database__USER=null
+      - FORGEJO__database__PASSWD=null
+    restart: always
+    networks:
+      - forgejo
+    volumes:
+      - ./forgejo:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8383:3000"
+      - "2112:22"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=null
+      - POSTGRES_PASSWORD=null
+      - POSTGRES_DB=null
+    networks:
+      - forgejo
+    volumes:
+      - ./postgres:/var/lib/postgresql/data

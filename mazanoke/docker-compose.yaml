@@ -1,0 +1,10 @@
+services:
+  mazanoke:
+    container_name: mazanoke
+    image: ghcr.io/civilblur/mazanoke:latest
+    restart: unless-stopped
+    ports:
+      - "7434:80"
+    labels:
+      # watch tower for auto update
+      - "com.centurylinklabs.watchtower.enable=true"
