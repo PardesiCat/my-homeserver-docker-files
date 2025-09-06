@@ -5,4 +5,7 @@ that are hosting from my home
 if your planning to use this make sure what you trying to do
 incase you need help contact me 
 
+### Note
+Some of docker compose files are written by me for my personal usage...
+
 [My official website](https://pardesicat.xyz)

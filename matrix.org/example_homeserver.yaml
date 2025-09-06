@@ -1,0 +1,44 @@
+### Example of 'Homeserver.yaml' with postgre support
+
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "im.pardesicat.xyz"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+database:
+  name: psycopg2        # this must be set for chaging usage to postgre db
+  args:
+    user: username      # must be match with docker-compose database conf
+    password:           # must be match with docker-compose database conf [use strong password]
+    dbname: synapse     # must be match with docker-compose database conf
+    host: db             #docker-compose using as db
+    cp_min: 5
+    cp_max: 10
+log_config: "/data/im.pardesicat.xyz.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: ""
+report_stats: true
+macaroon_secret_key: ""
+form_secret: ""
+signing_key_path: "/data/im.pardesicat.xyz.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+
+# vim:ft=yaml
