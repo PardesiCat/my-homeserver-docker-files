@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   reubah:
     image: ghcr.io/dendianugerah/reubah:latest

@@ -1,5 +1,4 @@
 #!written by PardesiCat <contact@pardesicat.xyz>
-version: "3.9"
 
 services:
   nextcloud-aio-mastercontainer:

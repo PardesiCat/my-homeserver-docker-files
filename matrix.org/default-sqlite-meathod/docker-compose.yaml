@@ -1,5 +1,4 @@
 # written by pardesi_cat
-version: "3"
 
 services:
   matrix:

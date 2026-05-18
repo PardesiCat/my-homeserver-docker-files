@@ -1,4 +1,3 @@
-version: '3'
 services:
  portrainer:
   image: portainer/portainer-ce:lts
